@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { FiArrowLeft } from 'react-icons/fi'
 import Card from '../components/Card'
+import { ROUTES } from '../config/api'
 
 export default function CardDetail() {
   const [card, setCard] = useState(null)
@@ -12,7 +13,7 @@ export default function CardDetail() {
   useEffect(() => {
     const fetchCard = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/cards/${cardId}`)
+        const response = await fetch(`${ROUTES.CARDS}/${cardId}`)
         if (!response.ok) {
           throw new Error('Carte non trouvée')
         }

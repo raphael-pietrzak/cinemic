@@ -11,6 +11,21 @@ const Card = sequelize.define('Card', {
     type: DataTypes.STRING,
     allowNull: false
   },
+  category: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
+  tags: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    get() {
+      const rawValue = this.getDataValue('tags');
+      return rawValue ? JSON.parse(rawValue) : [];
+    },
+    set(value) {
+      this.setDataValue('tags', JSON.stringify(value));
+    }
+  },
   image: {
     type: DataTypes.STRING
   },

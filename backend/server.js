@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const sequelize = require('./config/database');
 const cardRoutes = require('./routes/cardRoutes');
 
@@ -8,6 +9,9 @@ const port = 3000;
 
 app.use(cors());
 app.use(express.json());
+
+// Servir les fichiers statiques
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Routes
 app.use('/api', cardRoutes);

@@ -27,3 +27,6 @@ dist-ssr
 Thumbs.db
 .env
 .env.local
+
+uploads/*
+database.sqlite
