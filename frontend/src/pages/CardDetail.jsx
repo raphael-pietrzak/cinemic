@@ -10,6 +10,15 @@ export default function CardDetail() {
   const { cardId } = useParams()
   const navigate = useNavigate()
 
+  const fakeCard = {
+    id: cardId,
+    title: "Film exemple",
+    year: "2023",
+    director: "Réalisateur exemple",
+    poster: "https://place-hold.it/300x450/666/fff/000.jpg&text=Film+Exemple",
+    description: "Ceci est un exemple de description de film pour le cas où la requête échoue."
+  }
+
   useEffect(() => {
     const fetchCard = async () => {
       try {
@@ -20,7 +29,8 @@ export default function CardDetail() {
         const data = await response.json()
         setCard(data)
       } catch (err) {
-        setError(err.message)
+        console.log("Erreur de chargement, utilisation des données factices:", err.message)
+        setCard(fakeCard)
       }
     }
 
