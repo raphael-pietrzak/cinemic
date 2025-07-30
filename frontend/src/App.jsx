@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './App.css'
+import { ROUTES } from './config/api'
 
 function App() {
   const [searchNumber, setSearchNumber] = useState('')
@@ -12,7 +13,7 @@ function App() {
     setError('')
     
     try {
-      const response = await fetch(`http://localhost:3000/api/cards/${searchNumber}`)
+      const response = await fetch(`${ROUTES.CARDS}/${searchNumber}`)
       if (!response.ok) {
         throw new Error('Carte non trouvée')
       }
